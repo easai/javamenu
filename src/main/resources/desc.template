@@ -1,0 +1,10 @@
+Instantiate the menu.
+
+#MENUCLASS menu = new #MENUCLASS();
+
+Set the menu.
+
+menu.setMenu(this, this, Locale.US);
+
+Implement ActionListener.
+
