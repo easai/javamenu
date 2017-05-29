@@ -42,6 +42,10 @@ public class JavaMenuFrame extends JFrame implements ActionListener {
 	public JavaMenuFrame() {
 		treeEditor.init();
 
+		MenuTransferHandler handler=new MenuTransferHandler();
+		treeEditor.tree.setTransferHandler(handler);
+
+		
 		menu.setMenu(this, this, Locale.US);
 
 		JSplitPane horizPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
