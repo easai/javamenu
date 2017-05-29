@@ -4,6 +4,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -99,7 +100,15 @@ public class MenuTransferHandler extends TransferHandler {
 
     /** Defensive copy used in createTransferable. */
     private DefaultMutableTreeNode copy(TreeNode node) {
-        return new DefaultMutableTreeNode(node);
+    	DefaultMutableTreeNode newNode=new DefaultMutableTreeNode(node);
+    	if(!node.isLeaf()){
+    		Enumeration<TreeNode> list=node.children();
+    		while(list.hasMoreElements()){
+    			TreeNode n=list.nextElement();
+    			newNode.add(copy(n));
+    		}
+    	}
+    	return newNode;
     }
 
     protected void exportDone(JComponent source, Transferable data, int action) {
@@ -156,7 +165,7 @@ public class MenuTransferHandler extends TransferHandler {
         		orgRoot=(DefaultMutableTreeNode)nodesToRemove[0].getParent();        
         	}        	
         	
-        	if(parentLevel==level && level == 3 && upRoot!=null && upRoot.equals(orgRoot)){
+        	if(parentLevel==level && upRoot!=null && upRoot.equals(orgRoot)){
         		// reorder        		
         		destIndex=(srcIndex<destIndex)?destIndex+1:destIndex;
         		destIndex=(destIndex<0)?0:destIndex;
