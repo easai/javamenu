@@ -32,7 +32,7 @@ public class JavaMenuFrame extends JFrame implements ActionListener {
 
 	TreeEditor treeEditor = new TreeEditor("");
 
-	JTextArea menuCode = new JTextArea();
+	MenuCode menuCode = new MenuCode();
 	JTextArea listenerCode = new JTextArea();
 
 	JavaMenuMenu menu = new JavaMenuMenu();
@@ -42,10 +42,9 @@ public class JavaMenuFrame extends JFrame implements ActionListener {
 	public JavaMenuFrame() {
 		treeEditor.init();
 
-		MenuTransferHandler handler=new MenuTransferHandler();
+		MenuTransferHandler handler = new MenuTransferHandler();
 		treeEditor.tree.setTransferHandler(handler);
 
-		
 		menu.setMenu(this, this, Locale.US);
 
 		JSplitPane horizPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -102,8 +101,8 @@ public class JavaMenuFrame extends JFrame implements ActionListener {
 	public String readFile(String fn) {
 		String buffer = "";
 		BufferedReader reader = null;
-		try {			
-			InputStream is = this.getClass().getResourceAsStream("/"+fn);			
+		try {
+			InputStream is = this.getClass().getResourceAsStream("/" + fn);
 			reader = new BufferedReader(new InputStreamReader(is));
 			char buf[] = new char[255];
 			int len;
