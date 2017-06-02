@@ -281,28 +281,6 @@ public class JavaMenuFrame extends JFrame implements ActionListener {
 		String miNum = getMiNum();
 		String menuConstStr = menuStr + "\n" + menuItemStr + "\n" + enumStr + "\n" + miNum;
 
-		/*
-		 * Generates menu constants.
-		 * 
-		 * Ex. static String menus[] = { "Files", "Edit", "View", "Help" };
-		 * String menuitems[][] = { { "Open", "Save", "Exit" }, { "Add", "Copy",
-		 * "Delete" }, { "CollapseAll", "ExpandAll", "Collapse",
-		 * "CollapseNodeatSameLevel", "Refresh", "FontSize" }, { "AboutJavaMenu"
-		 * } };
-		 * 
-		 * enum MENUITEM{ nFilesOpen, nFilesSave, nFilesExit, nEditAdd,
-		 * nEditCopy, nEditDelete, nViewCollapseAll, nViewExpandAll,
-		 * nViewCollapse, nViewCollapseNodeatSameLevel, nViewRefresh,
-		 * nViewFontSize, nHelpAboutJavaMenu };
-		 * 
-		 * MENUITEM mi_num[][] = { { MENUITEM.nFilesOpen, MENUITEM.nFilesSave,
-		 * MENUITEM.nFilesExit }, { MENUITEM.nEditAdd, MENUITEM.nEditCopy,
-		 * MENUITEM.nEditDelete }, { MENUITEM.nViewCollapseAll,
-		 * MENUITEM.nViewExpandAll, MENUITEM.nViewCollapse,
-		 * MENUITEM.nViewCollapseNodeatSameLevel, MENUITEM.nViewRefresh,
-		 * MENUITEM.nViewFontSize }, { MENUITEM.nHelpAboutJavaMenu } };
-		 */
-
 		String footer = readFile("footer.template");
 
 		menuCode.setText(header + menuConstStr + footer);
